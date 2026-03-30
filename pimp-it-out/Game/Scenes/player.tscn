@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://kw6eewesn4sb"]
+
+[ext_resource type="Script" uid="uid://cldnxbshl4y6k" path="res://Game/Scripts/player.gd" id="1_nq405"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_y40kj"]
+friction = 0.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y40kj"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nq405"]
+
+[node name="Player" type="RigidBody3D" unique_id=1091775183 node_paths=PackedStringArray("ray", "camera")]
+collision_layer = 2
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_y40kj")
+script = ExtResource("1_nq405")
+ray = NodePath("RayCast3D")
+camera = NodePath("Camera3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=977587100]
+shape = SubResource("CapsuleShape3D_y40kj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1800639173]
+mesh = SubResource("CapsuleMesh_nq405")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1205868796]
+target_position = Vector3(0, -1.5, 0)
+debug_shape_thickness = 5
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=953868511]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.5402832, 0.33661652)

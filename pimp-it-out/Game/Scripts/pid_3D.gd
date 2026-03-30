@@ -1,0 +1,23 @@
+extends RefCounted
+class_name Pid3D
+
+var _p : float
+var _i : float
+var _d : float
+
+var _prev_error : Vector3
+var _error_integral : Vector3
+
+func _init(p: float , i: float, d: float) -> void:
+	_p = p
+	_i = i
+	_d = d
+
+func update(error: Vector3 , delta: float) -> Vector3:
+	_error_integral += error * delta
+	_error_integral = _error_integral.clamp(Vector3(-10,-10,-10), Vector3(10,10,10))
+	var _error_derivative = (error - _prev_error) / delta
+	_prev_error = error
+	return _p * error + _i * _error_integral + _d * _error_derivative
+func reset_integral():
+	_error_integral = Vector3.ZERO
