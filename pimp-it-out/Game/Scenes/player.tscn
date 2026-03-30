@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://kw6eewesn4sb"]
 
 [ext_resource type="Script" uid="uid://cldnxbshl4y6k" path="res://Game/Scripts/player.gd" id="1_nq405"]
+[ext_resource type="PackedScene" uid="uid://dcxjep2lvpwha" path="res://Game/Scenes/cursor.tscn" id="2_iy04j"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_y40kj"]
 friction = 0.0
@@ -9,14 +10,15 @@ friction = 0.0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_nq405"]
 
-[node name="Player" type="RigidBody3D" unique_id=1091775183 node_paths=PackedStringArray("ray", "camera")]
+[node name="Player" type="RigidBody3D" unique_id=1091775183 node_paths=PackedStringArray("grounded", "camera", "view")]
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 physics_material_override = SubResource("PhysicsMaterial_y40kj")
 script = ExtResource("1_nq405")
-ray = NodePath("RayCast3D")
+grounded = NodePath("Grounded")
 camera = NodePath("Camera3D")
+view = NodePath("Camera3D/View")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=977587100]
 shape = SubResource("CapsuleShape3D_y40kj")
@@ -24,9 +26,17 @@ shape = SubResource("CapsuleShape3D_y40kj")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1800639173]
 mesh = SubResource("CapsuleMesh_nq405")
 
-[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1205868796]
+[node name="Grounded" type="RayCast3D" parent="." unique_id=1205868796]
 target_position = Vector3(0, -1.5, 0)
 debug_shape_thickness = 5
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=953868511]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.5402832, 0.33661652)
+
+[node name="View" type="RayCast3D" parent="Camera3D" unique_id=1946020644]
+transform = Transform3D(-0.25, -4.5298742e-07, -1.650059e-15, 0, -1.3113416e-07, 0.25, -3.774895e-08, 3, 1.0927847e-08, 0, 0, 0)
+collision_mask = 4
+debug_shape_custom_color = Color(0.77254903, 0, 0.6627451, 1)
+debug_shape_thickness = 3
+
+[node name="Cursor" parent="." unique_id=1202101476 instance=ExtResource("2_iy04j")]
