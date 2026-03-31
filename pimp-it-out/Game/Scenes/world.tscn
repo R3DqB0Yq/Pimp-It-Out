@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://ceybvhgjd3vlh"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_lgi3o"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_ne10a"]
+[ext_resource type="PackedScene" uid="uid://bsdwj2ad5y08" path="res://Game/Scenes/npc.tscn" id="1_ne10a"]
 
 [node name="World" type="Node3D" unique_id=1341598015]
 
@@ -16,11 +14,7 @@ size = Vector3(15.942764, 0.2475586, 15.852356)
 transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 10, 14)
 shadow_enabled = true
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1466627603]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3448486, -3.8621216)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1595159396]
-shape = SubResource("BoxShape3D_lgi3o")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=116330740]
-mesh = SubResource("BoxMesh_ne10a")
+[node name="NPC" parent="." unique_id=123378689 groups=["npc"] instance=ExtResource("1_ne10a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1502686, 0.9937134, -0.682251)
+collision_layer = 12
+metadata/type = &"merchant"

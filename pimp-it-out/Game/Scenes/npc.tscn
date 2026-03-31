@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bsdwj2ad5y08"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nfbvd"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1wf7o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nfbvd"]
+albedo_color = Color(1, 0.31764707, 1, 1)
+
+[node name="NPC" type="RigidBody3D" unique_id=123378689]
+collision_layer = 8
+collision_mask = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=576129164]
+shape = SubResource("CapsuleShape3D_nfbvd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=427347226]
+mesh = SubResource("CapsuleMesh_1wf7o")
+surface_material_override/0 = SubResource("StandardMaterial3D_nfbvd")

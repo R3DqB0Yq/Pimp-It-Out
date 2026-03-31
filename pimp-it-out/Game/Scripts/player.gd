@@ -32,8 +32,12 @@ func _physics_process(delta: float) -> void:
 	# --- Lógica de visión ---
 	var npc = _get_looked_at_npc()
 	if npc:
-		var tipo = npc.get_meta("type", "unknown")
-		match tipo:
+		print("NPC encontrado: ", npc.name)
+		print("Grupos: ", npc.get_groups())
+		print("Tiene meta type: ", npc.has_meta("type"))
+		print("Valor type: ", npc.get_meta("type", "NO EXISTE"))
+		var type = npc.get_meta("type", "unknown")
+		match type:
 			"merchant": print("Mercader: ", npc.get_meta("name", "???"))
 			"enemy":    print("Enemigo: ", npc.get_meta("name", "???"))
 			"guard":    print("Guardia: ", npc.get_meta("name", "???"))
