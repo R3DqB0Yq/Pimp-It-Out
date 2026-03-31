@@ -38,9 +38,7 @@ func _physics_process(delta: float) -> void:
 		print("Valor type: ", npc.get_meta("type", "NO EXISTE"))
 		var type = npc.get_meta("type", "unknown")
 		match type:
-			"merchant": print("Mercader: ", npc.get_meta("name", "???"))
-			"enemy":    print("Enemigo: ", npc.get_meta("name", "???"))
-			"guard":    print("Guardia: ", npc.get_meta("name", "???"))
+			"civilian": print("Mercader: ", npc.get_meta("name", "???"))
    # --- Lógica de control ---
 	var input = Vector3(
 		Input.get_action_strength("move_left") - Input.get_action_strength("move_right"),
